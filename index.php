@@ -8,16 +8,25 @@
     
     session_start();
     
+	
+	/**
+	 *
+	 *
+	 *
+	 *
+	 *
+	 **/
     class Main
-	{		
+	{
+		
 		function beforeroute()
 		{
-			//require_once 'view/plate.html';			
+			require_once 'view/header.html';			
 		}
 		
 		function afterroute()
 		{
-			//require_once 'view/plate_end.html';
+			require_once 'view/footer.html';
 		}
 		
 		function index($f3)
@@ -51,5 +60,6 @@
 	$f3->route('GET|POST /receipt', 'Main->receipt');
 	$f3->route('GET|POST /cart', 'Main->cart');
     
+	//runs the routes
     $f3->run();	
 ?>

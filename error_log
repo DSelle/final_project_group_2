@@ -7,3 +7,6 @@
 [13-Mar-2017 10:18:59 America/Chicago] PHP Fatal error:  Class 'OrderController' not found in /home/nperez9/public_html/final/index.php on line 25
 [13-Mar-2017 10:18:59 America/Chicago] Fatal error: Class 'OrderController' not found
 [13-Mar-2017 10:18:59 America/Chicago] [final/index.php:25] 
+[13-Mar-2017 11:40:00 America/Chicago] HTTP 404 (GET /styles/styles.css)
+[13-Mar-2017 11:40:00 America/Chicago] [final/final_project_group_2/vendor/bcosca/fatfree-core/base.php:1640] Base->error()
+[13-Mar-2017 11:40:00 America/Chicago] [final/final_project_group_2/index.php:54] Base->run()
