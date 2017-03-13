@@ -1,0 +1,9 @@
+[13-Mar-2017 10:18:28 America/Chicago] require_once(view/plate.html): failed to open stream: No such file or directory
+[13-Mar-2017 10:18:28 America/Chicago] [final/vendor/bcosca/fatfree-core/base.php:2165] Base->error()
+[13-Mar-2017 10:18:28 America/Chicago] [final/index.php:15] Base->{closure}()
+[13-Mar-2017 10:18:28 America/Chicago] [final/index.php:15] Main::beforeroute()
+[13-Mar-2017 10:18:28 America/Chicago] [final/vendor/bcosca/fatfree-core/base.php:1607] Base->call()
+[13-Mar-2017 10:18:28 America/Chicago] [final/index.php:33] Base->run()
+[13-Mar-2017 10:18:59 America/Chicago] PHP Fatal error:  Class 'OrderController' not found in /home/nperez9/public_html/final/index.php on line 25
+[13-Mar-2017 10:18:59 America/Chicago] Fatal error: Class 'OrderController' not found
+[13-Mar-2017 10:18:59 America/Chicago] [final/index.php:25] 
