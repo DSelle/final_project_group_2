@@ -24,3 +24,14 @@ a
     font-size: smaller;
     color: #adf442;
 }
+
+.card_body
+{
+    background-color: #efe6cb;
+    border-radius: 5px;
+}
+
+.small_pad
+{
+    padding: 5px;
+}

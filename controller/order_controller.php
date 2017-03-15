@@ -1,5 +1,5 @@
 <?php
-  require_once 'model/menu_db.php';
+    require_once 'model/menu_db.php';
 
     class OrderController
     {
@@ -17,10 +17,11 @@
 
         public function menu()
         {
-            $test = getMenu();
-            //echo '<h1>Test: '.$test.'</h1>';
-            var_dump($test);
-            exit();
+            //$test = getMenu();
+            ////echo '<h1>Test: '.$test.'</h1>';
+            //var_dump($test);
+            //exit();
+            
             echo Template::instance()->render('view/menu.php');
         }
 
