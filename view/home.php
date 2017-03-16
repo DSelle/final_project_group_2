@@ -8,7 +8,10 @@
             <p>Est. 1437 B.C as a true example of American Cuisine</p>
             <br>
         </div>
-        <br><br><br><br><br><br><br><br>
+        <br>
+    </div>
+    <div class="row">
+        <br><br><br><br>
     </div>
     
     <div class="row">
@@ -37,7 +40,7 @@
     </div>
     
     <div class="row">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="col-sm-12 sub_text text-center fixed-bottom">
         <p>© 2017 Trendy American Food Place Restaurants LLC.</p>
         <p>The Trendy American Food Place’s logo is a registered trademark and copyrighted work of Trendy American Food Place Restaurants LLC.</p>

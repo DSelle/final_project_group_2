@@ -17,12 +17,21 @@
 
         public function menu()
         {
-            //$test = getMenu();
-            ////echo '<h1>Test: '.$test.'</h1>';
-            //var_dump($test);
-            //exit();
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
-            echo Template::instance()->render('view/menu.php');
+            }else{
+                
+                $data = getMenu();
+           
+                
+                //var_dump($data);
+                //exit();
+                
+                $this->_f3->set('menu', $data);
+            
+                echo Template::instance()->render('view/menu.php');
+            }
+            
         }
 
         public function receipt()
