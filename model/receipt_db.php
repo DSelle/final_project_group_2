@@ -1,36 +1,54 @@
 <?php
-require_once 'connection.php';
+  /**
+   * Handles interactions with the receipt database
+   *
+   * PHP Version 7
+   *
+   * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+   * @version 1.0
+   */
 
-function getAllReceipt()
-{
-  $pdo = getConnection();
+  require_once 'connection.php';
 
-  $select = 'SELECT id, table_num, menu_item, item_quantity,
-  sub_total, tax, tip, total
-  FROM receipt';
-  $results = $pdo->query($select);
+  /**
+   * Retrieves all receipts stored in the database
+   * @return Array Returns an array of entries from the database
+   */
+  function getAllReceipt()
+  {
+    $pdo = getConnection();
 
-  $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+    $select = 'SELECT id, table_num, menu_item, item_quantity,
+    sub_total, tax, tip, total
+    FROM receipt';
+    $results = $pdo->query($select);
 
-  return $rows;
-}
+    $rows = $results->fetchAll(PDO::FETCH_ASSOC);
 
-function getReceipt($id)
-{
-  $pdo = getConnection();
+    return $rows;
+  }
 
-  $select = 'SELECT table_num, menu_item, item_quantity,
-  sub_total, tax, tip, total
-  FROM receipt
-  WHERE id=:id';
+  /**
+   * Retrieves a single receipt from the database
+   * @param  String $id The id of the entry to retrieve
+   * @return Array     Returns an array containing the entry
+   */
+  function getReceipt($id)
+  {
+    $pdo = getConnection();
 
-  $statement = $pdo->prepare($select);
+    $select = 'SELECT table_num, menu_item, item_quantity,
+    sub_total, tax, tip, total
+    FROM receipt
+    WHERE id=:id';
 
-  $statement->bindValue(':id', $id, PDO::PARAM_STR);
-  $statement->execute();
+    $statement = $pdo->prepare($select);
 
-  $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement->bindValue(':id', $id, PDO::PARAM_STR);
+    $statement->execute();
 
-  return $rows;
-}
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $rows;
+  }
 ?>
