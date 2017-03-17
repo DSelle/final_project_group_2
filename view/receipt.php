@@ -41,7 +41,54 @@
     </div>
     
     <div class="row">
-        <p>Table here</p>       
+        <div class="col-sm-12 box_body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Customer Name</th>
+                        <th>Table Number</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Test Name</td>
+                        <td>Test Table Number</td>
+                        <td>Test Total</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Test Name</td>
+                        <td>Test Table Number</td>
+                        <td>Test Total</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Test Name</td>
+                        <td>Test Table Number</td>
+                        <td>Test Total</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Test Name</td>
+                        <td>Test Table Number</td>
+                        <td>Test Total</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Test Name</td>
+                        <td>Test Table Number</td>
+                        <td>Test Total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>      
     </div>
     
     
