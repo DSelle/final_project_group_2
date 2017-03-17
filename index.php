@@ -5,10 +5,10 @@
 
     //error handling
     $f3->set('DEBUG', 3);
-    
+
     session_start();
-    
-	
+
+
 	/**
 	 *
 	 *
@@ -18,48 +18,48 @@
 	 **/
     class Main
 	{
-		
+
 		function beforeroute()
 		{
-			require_once 'view/header.html';			
+			require_once 'view/header.html';
 		}
-		
+
 		function afterroute()
 		{
 			require_once 'view/footer.html';
 		}
-		
+
 		function index($f3)
 		{
 			$controller = new OrderController($f3);
-			$controller->home();			
+			$controller->home();
 		}
-		
+
 		function menu($f3)
 		{
 			$controller = new OrderController($f3);
-			$controller->menu();			
+			$controller->menu();
 		}
-		
+
 		function receipt($f3)
 		{
 			$controller = new OrderController($f3);
-			$controller->receipt();			
+			$controller->receipt();
 		}
-		
+
 		function cart($f3)
 		{
 			$controller = new OrderController($f3);
-			$controller->cart();			
+			$controller->cart();
 		}
     }
-    
+
     //routes
 	$f3->route('GET /', 'Main->index');
-	$f3->route('GET /menu', 'Main->menu');
+	$f3->route('GET|POST /menu', 'Main->menu');
 	$f3->route('GET|POST /receipt', 'Main->receipt');
 	$f3->route('GET|POST /cart', 'Main->cart');
-    
+
 	//runs the routes
-    $f3->run();	
+    $f3->run();
 ?>
