@@ -1,20 +1,49 @@
 <div class="container">
+    <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
     <div class="row">
-        <div class="col-sm-12">
-            <p>Menu Page</p>
+        <br><br><br><br>
 
-            <ul>
-                <li><a href="{{@BASE}}">HOME</a></li>
-                <li><a href="{{@BASE}}/menu">MENU</a></li>
-                <li><a href="{{@BASE}}/receipt">RECEIPT</a></li>
-                <li><a href="{{@BASE}}/cart">CART</a></li>
-            </ul>
+        <div class="col-sm-12 box_body text-center">
+            <h1><strong>[</strong> Trendy American Food Place <strong>]</strong></h1>
+            <p>Est. 1437 B.C as a true example of American Cuisine</p>
+            <br>
         </div>
-        
+        <br>
     </div>
     <div class="row">
+        <br><br><br><br>
+    </div>
+    
+    <div class="row">
+        <a href="{{@BASE}}">
+            <div class="col-sm-offset-2 col-sm-2 text-center box_body">
+                <h3><strong>[ Home ]</strong></h3>
+                <br>
+            </div>
+        </a>
+        </strong>
+        <a href="{{@BASE}}/receipt">
+            <div class="col-sm-offset-1 col-sm-2 col-sm-offset-1 text-center box_body">
+                <h3><strong>[ Receipt ]</strong></h3>
+                <br>
+            </div>
+        </a>
+        
+        <a href="{{@BASE}}/cart">
+            <div class="col-sm-2 col-sm-offset-1 text-center box_body">
+                <h3><strong>[ Cart ]</strong></h3>
+                <br>
+            </div>
+        </a>        
+    </div>
+    
+    <div class="row">
+        <br><br>        
+    </div>
+    
+    <div class="row">
         <repeat group="{{@menu}}" value="{{@menuItem}}">
-            <div class="col-sm-3 col-sm-offset-1 menu_item bottom_pad">
+            <div class="col-sm-4 menu_item bottom_pad">
                 <div class="card card_body menu_item">
                     <img class="card-img-top" src="{{@menuItem['image_path']}}" alt="{{@menuItem['food_name']}} Image" width="100%">
                     
@@ -36,4 +65,13 @@
             </div>
         </repeat>
     </div>
+    
+    <div class="row">
+        <br><br>
+        <div class="col-sm-12 sub_text text-center fixed-bottom">
+        <p>© 2017 Trendy American Food Place Restaurants LLC.</p>
+        <p>The Trendy American Food Place’s logo is a registered trademark and copyrighted work of Trendy American Food Place Restaurants LLC.</p>
+        </div>
+    </div>
+    
 </div>
