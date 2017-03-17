@@ -18,9 +18,14 @@ body
     box-shadow: 5px 5px  #adf442;
 }
 
-.nav_box
+h4
 {
-    background-color: #efe6cb;
+    margin-top:6px;
+}
+
+.the_foot
+{
+    margin-top: 450px;
 }
 
 .bottom_pad

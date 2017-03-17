@@ -17,22 +17,19 @@
     <div class="row">
         <a href="{{@BASE}}">
             <div class="col-sm-offset-2 col-sm-2 text-center box_body">
-                <h3><strong>[ Home ]</strong></h3>
-                <br>
+                <h4><strong>[ Home ]</strong></h4>
             </div>
         </a>
         </strong>
         <a href="{{@BASE}}/receipt">
             <div class="col-sm-offset-1 col-sm-2 col-sm-offset-1 text-center box_body">
-                <h3><strong>[ Receipt ]</strong></h3>
-                <br>
+                <h4><strong>[ Receipt ]</strong></h4>
             </div>
         </a>
         
         <a href="{{@BASE}}/cart">
             <div class="col-sm-2 col-sm-offset-1 text-center box_body">
-                <h3><strong>[ Cart ]</strong></h3>
-                <br>
+                <h4><strong>[ Cart ]</strong></h4>
             </div>
         </a>        
     </div>
@@ -66,8 +63,7 @@
         </repeat>
     </div>
     
-    <div class="row">
-        <br><br>
+    <div class="row the_foot">
         <div class="col-sm-12 sub_text text-center fixed-bottom">
         <p>© 2017 Trendy American Food Place Restaurants LLC.</p>
         <p>The Trendy American Food Place’s logo is a registered trademark and copyrighted work of Trendy American Food Place Restaurants LLC.</p>
