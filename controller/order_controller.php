@@ -18,15 +18,19 @@
         public function menu()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+                
+                $type = $_POST['type'];
+                
+                $newMenu = getTypeMenu($type);
+                
+                $this->_f3->set('menu', $data);
+                
+                echo Template::instance()->render('view/menu.php');
+                
             }else{
                 
                 $data = getMenu();
            
-                
-                //var_dump($data);
-                //exit();
-                
                 $this->_f3->set('menu', $data);
             
                 echo Template::instance()->render('view/menu.php');

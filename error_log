@@ -97,3 +97,6 @@
 [16-Mar-2017 13:34:51 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home/nperez9/public_html/final/final_project_group_2/controller/order_controller.php on line 26
 [16-Mar-2017 13:34:51 America/Chicago] Fatal error: syntax error, unexpected '='
 [16-Mar-2017 13:34:51 America/Chicago] [final/final_project_group_2/controller/order_controller.php:26] 
+[17-Mar-2017 09:13:50 America/Chicago] HTTP 405 (POST /menu)
+[17-Mar-2017 09:13:50 America/Chicago] [final/final_project_group_2/vendor/bcosca/fatfree-core/base.php:1656] Base->error()
+[17-Mar-2017 09:13:50 America/Chicago] [final/final_project_group_2/index.php:64] Base->run()
