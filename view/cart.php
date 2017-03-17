@@ -41,10 +41,60 @@
     </div>
     
     <div class="row">
-        <p>Cart Here</p>       
+        <div class="col-sm-12 box_body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Menu Item</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat group="{{@currentCart}}" value="{{@cartItem}}">
+                        <tr>
+                            <th scope="row">{{@cartItem['list_number']}}</th>
+                            <td>{{@cartItem['food_name']}}</td>
+                            <td>{{@cartItem['quantity']}}</td>
+                            <td>{{@cartItem['total']}}</td>
+                        </tr>
+                    </repeat>
+                </tbody>
+            </table>
+        </div>
     </div>
     
-    
+    <div class="row">
+        <br><br>
+        <div class="col-sm-2 box_body text-left">
+                <p><strong>Subtotal: </strong>{{@subtotal}}</p>
+                <p><strong>Tax: </strong>{{@tax}}</p>
+                <p><strong>Total: </strong>{{@endTotal}}</p>
+        </div>
+        
+        <div class="col-sm-8 cart_form_margin box_body text-left">
+            <div class="row">
+                
+                <form action="" method="POST">                    
+                <div class="col-sm-8">
+                    <div class="form-group">
+                      <label for="table">Table Number</label>
+                      <input type="text" class="form-control" id="table">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="customer">Customer Name</label>
+                      <input type="text" class="form-control" id="customer">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-default pull-right">Checkout</button>
+                    </form>
+                </div>
+            </div>           
+        </div>
+    </div>
     
     <div class="row the_foot">
         <div class="col-sm-12 sub_text text-center fixed-bottom">

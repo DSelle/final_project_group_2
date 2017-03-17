@@ -37,6 +37,12 @@ h4
 {
     min-height: 425px;    
 }
+
+.cart_form_margin
+{
+    margin-left: 25px;
+    margin-right: 25px;
+}
 .button_position
 {
     position: absolute;
