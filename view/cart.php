@@ -86,7 +86,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                           <label for="tip">Tip</label>
-                          <input name="tip" type="number" class="form-control" id="tip">
+                          <input name="tip" type="number" step="any" class="form-control" id="tip">
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -95,6 +95,8 @@
                         <button type="submit" class="btn btn-default pull-right">Checkout</button>
                         </div>    
                     </div>
+                    <input type="hidden" name="tax" value="{{@tax}}">
+                    <input type="hidden" name="subtotal" value="{{@subtotal}}">
                 </form>
             </div>           
         </div>

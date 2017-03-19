@@ -1,5 +1,6 @@
 <?php
     require_once 'model/menu_db.php';
+    require_once 'model/receipt_db.php';
 
     class OrderController
     {
@@ -54,41 +55,39 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                //validate inputs
-                $tableNumber = $_POST['table'];
-                $menuID = "";
-                $quantity = "";
-                $subtotal = 0.00;
-                $tax = 0.00
-                $tip = $_POST['tip'];
-                $total = 0.00;
                 
+                //validate inputs
+                
+                
+                $theKeys = array();
+                $theValues = array();
                 
                 foreach($_SESSION['cart'] as $key=>$value){
-                    $eachItem = getItemById($key);
-                    
-                    $tempTotal = $value * $eachItem['price'];
-
-                    $menuID += $key;
-                    $quantity += $value;
-
-                    $subtotal += $total;
+                    $theKeys[] =  $key;
+                    $theValues[] = $value;
                 }
+                $stringKey = implode(",", $theKeys);
+                $stringValue = implode(",", $theValues);
                 
-                $tableNumber = $_POST['table'];
-                $menuID = "";
-                $quantity = "";
-                $subtotal = 0.00;
-                $tax = 0.00
-                $tip = $_POST['tip'];
-                $total = 0.00;
                 
                 //send to db
-                setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total)
                 
                 
+                $tableNumber = $_POST['table'];
+                $menuID = $stringKey;
+                $quantity = $stringValue;
+                $subtotal = $_POST['subtotal'];
+                $tax = $_POST['tax'];
+                $tip = $_POST['tip'];
+                $total = $tip+$tax+$subtotal;
+                
+                setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total);
+                
+                session_unset();
                 
                 echo Template::instance()->render('view/home.php');
+                
+                
                 
             } else {
 
