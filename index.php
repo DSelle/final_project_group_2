@@ -16,7 +16,7 @@
     $f3->set('DEBUG', 3);
 
     session_start();
-
+	
     /**
      * Wrapper class for fat-free routing
      */

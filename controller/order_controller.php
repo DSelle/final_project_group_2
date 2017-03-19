@@ -19,31 +19,15 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                //$type = $_POST['type'];
-                //
-                //$newMenu = getTypeMenu($type);
-                //
-                //$this->_f3->set('menu', $data);
+                
 
                 if(!isset($_SESSION['cart'])) {
-                  //$_SESSION['cart'][];
-                  $_SESSION['cart'] = array();
+                 
+                    $_SESSION['cart'] = array();
                 }
+                
                 $_SESSION['cart'][$_POST['item']] = $_POST['quantity'];
-                var_dump($_SESSION['cart']);
-                //$_SESSION['cart'] = array();
-                //exit();
-
-
-
-                //$_SESSION['currentCart'] = array();
-                //var_dump($_POST);
-                //exit();
-                //$_SESSION['currentCart'] += $item;
-
-                //var_dump($_SESSION['currentCart']);
-                //exit(0);
-
+                
                 $data = getMenu();
 
                 $this->_f3->set('menu', $data);
@@ -51,7 +35,7 @@
                 echo Template::instance()->render('view/menu.php');
 
             }else{
-
+                
                 $data = getMenu();
 
                 $this->_f3->set('menu', $data);
@@ -71,10 +55,41 @@
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 //validate inputs
+                $tableNumber = $_POST['table'];
+                $menuID = "";
+                $quantity = "";
+                $subtotal = 0.00;
+                $tax = 0.00
+                $tip = $_POST['tip'];
+                $total = 0.00;
+                
+                
+                foreach($_SESSION['cart'] as $key=>$value){
+                    $eachItem = getItemById($key);
+                    
+                    $tempTotal = $value * $eachItem['price'];
 
+                    $menuID += $key;
+                    $quantity += $value;
+
+                    $subtotal += $total;
+                }
+                
+                $tableNumber = $_POST['table'];
+                $menuID = "";
+                $quantity = "";
+                $subtotal = 0.00;
+                $tax = 0.00
+                $tip = $_POST['tip'];
+                $total = 0.00;
+                
                 //send to db
-                echo Template::instance()->render('view/receipt.php');
-                session_unset();
+                setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total)
+                
+                
+                
+                echo Template::instance()->render('view/home.php');
+                
             } else {
 
                 $cartItems = array();
@@ -82,7 +97,7 @@
                 $subtotal = 0;
                 $tax;
 
-                foreach($_SESSION['currentCart'] as $key => $value){
+                foreach($_SESSION['cart'] as $key=>$value){
                     $eachItem = getItemById($key);
                     $total = $value * $eachItem['price'];
 

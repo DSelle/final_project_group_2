@@ -16,14 +16,14 @@
 	   */
 		function getMenu()
 		{
-				$pdo = getConnection();
-
-				$select = 'SELECT id, food_name, category, price, description, image_path FROM menu';
-				$results = $pdo->query($select);
-
-				$rows = $results->fetchAll(PDO::FETCH_ASSOC);
-
-				return $rows;
+			$pdo = getConnection();
+	
+			$select = 'SELECT id, food_name, category, price, description, image_path FROM menu';
+			$results = $pdo->query($select);
+	
+			$rows = $results->fetchAll(PDO::FETCH_ASSOC);
+	
+			return $rows;
 		}
 
 		/**
@@ -33,19 +33,19 @@
 	   */
 		function getItemById($id)
 		{
-				$pdo = getConnection();
+			$pdo = getConnection();
 
-				$select = 'SELECT food_name, category, price, description, image_path
-				FROM menu
-				WHERE id=:id';
+			$select = 'SELECT food_name, category, price, description, image_path
+			FROM menu
+			WHERE id=:id';
 
-				$statement = $pdo->prepare($select);
-				$statement->bindValue(':id', $id, PDO::PARAM_STR);
-				$statement->execute();
+			$statement = $pdo->prepare($select);
+			$statement->bindValue(':id', $id, PDO::PARAM_STR);
+			$statement->execute();
 
-				$rows = $statement->fetch(PDO::FETCH_ASSOC);
+			$rows = $statement->fetch(PDO::FETCH_ASSOC);
 
-				return $rows;
+			return $rows;
 		}
 
 		/**

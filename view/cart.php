@@ -77,21 +77,25 @@
             <div class="row">
                 
                 <form action="" method="POST">                    
-                <div class="col-sm-8">
-                    <div class="form-group">
-                      <label for="table">Table Number</label>
-                      <input type="text" class="form-control" id="table">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                          <label for="table">Table Number</label>
+                          <input name="table" type="number" value="1" max="15" min="1" maxlength="2" class="form-control" id="table">
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                      <label for="customer">Customer Name</label>
-                      <input type="text" class="form-control" id="customer">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                          <label for="tip">Tip</label>
+                          <input name="tip" type="number" class="form-control" id="tip">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <button type="submit" class="btn btn-default pull-right">Checkout</button>
-                    </form>
-                </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                        <br>
+                        <button type="submit" class="btn btn-default pull-right">Checkout</button>
+                        </div>    
+                    </div>
+                </form>
             </div>           
         </div>
     </div>
