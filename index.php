@@ -1,12 +1,12 @@
 <?php
-  /**
-   * Central hub for MVC website
-   *
-   * PHP Version 7
-   *
-   * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
-   * @version 1.0
-   */
+	/**
+	 * Central hub for MVC website
+	 *
+	 * PHP Version 7
+	 *
+	 * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+	 * @version 1.0
+	 */
   
     //referencing my autoloader and retrieving our router
     require_once 'vendor/autoload.php';
@@ -23,56 +23,56 @@
     class Main
 	{
 
-    /**
-     * Includes header.html at the beginning of the page
-     */
+		/**
+		 * Includes header.html at the beginning of the page
+		 */
 		function beforeroute()
 		{
 			require_once 'view/header.html';
 		}
 
-    /**
-     * Includes footer.html at the end of the page
-     */
+		/**
+		 * Includes footer.html at the end of the page
+		 */
 		function afterroute()
 		{
 			require_once 'view/footer.html';
 		}
 
-    /**
-     * Instantiates the controller and calls the home() function
-     * @param  template $f3  The fat-free template
-     */
+		/**
+		 * Instantiates the controller and calls the home() function
+		 * @param  template $f3  The fat-free template
+		 */
 		function index($f3)
 		{
 			$controller = new OrderController($f3);
 			$controller->home();
 		}
 
-    /**
-     * Instantiates the controller and calls the menu() function
-     * @param  template $f3  The fat-free template
-     */
+		/**
+		 * Instantiates the controller and calls the menu() function
+		 * @param  template $f3  The fat-free template
+		 */
 		function menu($f3)
 		{
 			$controller = new OrderController($f3);
 			$controller->menu();
 		}
 
-    /**
-     * Instantiates the controller and calls the receipt() function
-     * @param  template $f3  The fat-free template
-     */
+		/**
+		 * Instantiates the controller and calls the receipt() function
+		 * @param  template $f3  The fat-free template
+		 */
 		function receipt($f3)
 		{
 			$controller = new OrderController($f3);
 			$controller->receipt();
 		}
 
-    /**
-     * Instantiates the controller and calls the cart() function
-     * @param  template $f3  The fat-free template
-     */
+		/**
+		 * Instantiates the controller and calls the cart() function
+		 * @param  template $f3  The fat-free template
+		 */
 		function cart($f3)
 		{
 			$controller = new OrderController($f3);

@@ -39,7 +39,7 @@ $(document).ready(function() {
     });
 
     //create an event handler for submission
-    $('input[type="submit"]').on("click", validate);
+   $('input[type="submit"]').on("click", validate);
 });
 
 /**

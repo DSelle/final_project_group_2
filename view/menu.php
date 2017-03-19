@@ -49,13 +49,13 @@
                         <div class="card-text desc-pos">{{@menuItem['description']}}</div>
                     </div>
                     <div class="menu_button row-fluid fixed-bottom">
-                        <form action="" method="POST" >
+                        <form action="" method="POST">
                         <div class="col-sm-4">
                             <input id="quantity" name="quantity" type="number" value="1" min="1" max="15" maxlength="2">
                         </div>
                         <input type="hidden" name="item" value="{{@menuItem['id']}}">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <input type="submit" value="Add" class="btn btn-default" id=qty-submit>
+                            <input type="submit" value="Add" class="btn btn-default" id="qty-submit">
                         </div>
                         </form>
                     </div>
