@@ -51,7 +51,6 @@ function validate(event)
 {
     //prevent the form from submitting
     event.preventDefault();
-
     var isError = false;
 
     //quantity must be numeric and between 1-15
@@ -66,6 +65,6 @@ function validate(event)
 
     //submit the form now that all data is good
     if (!isError) {
-        $("#qty-submit").submit();
+      $("#" + $("#item").val() + "-qty-submit").submit();
     }
 }
