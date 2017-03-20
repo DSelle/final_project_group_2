@@ -46,52 +46,63 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Customer Name</th>
                         <th>Table Number</th>
+                        <th>Tip</th>
                         <th>Total</th>
+                        <th>Link</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Test Name</td>
-                        <td>Test Table Number</td>
-                        <td>Test Total</td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Test Name</td>
-                        <td>Test Table Number</td>
-                        <td>Test Total</td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Test Name</td>
-                        <td>Test Table Number</td>
-                        <td>Test Total</td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Test Name</td>
-                        <td>Test Table Number</td>
-                        <td>Test Total</td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Test Name</td>
-                        <td>Test Table Number</td>
-                        <td>Test Total</td>
-                    </tr>
+                    <repeat group="{{@receipt}}" value="{{@aReceipt}}">
+                        <tr>
+                            <th scope="row">{{@aReceipt['id']}}</th>
+                            <td>{{@aReceipt['table_num']}}</td>
+                            <td>${{@aReceipt['tip']}}</td>
+                            <td>${{@aReceipt['total']}}</td>
+                            <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal{{@aReceipt['id']}}">More Info</button>
+                                <!-- Modal -->
+                                <div id="myModal{{@aReceipt['id']}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Receipt #{{@aReceipt['id']}}</h4>
+                                            </div>
+                                            
+                                            <div class="modal-body">
+                                                <p>Item name - quantity - price</p>
+                                                
+                                                <loop from="{{@i=0}}" to="{{@i< count(@itemNames)}}" step="{{@i++}}">
+                                                    test
+                                                    <repeat group="{{@itemNames[@i]}}" value="{{@anItem}}=>{{@theItem}}">
+                                                        {{@theItem}}
+                                                    </repeat>
+                                                    
+                                                </loop>                                             
+                                                
+                                                
+                                                <p>Subtotal: ${{@aReceipt['sub_total']}}</p>
+                                                <p>Tax: ${{@aReceipt['tax']}}</p>
+                                                <p>Tip: ${{@aReceipt['tip']}}</p>
+                                                <p>Total: ${{@aReceipt['total']}}</</p>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                            
+                                        </div>                            
+                                    </div>
+                                </div>                           
+                            </td>
+                        </tr>
+                    </repeat>
                 </tbody>
             </table>
         </div>      
     </div>
-    
-    
     
     <div class="row the_foot">
         <div class="col-sm-12 sub_text text-center fixed-bottom">

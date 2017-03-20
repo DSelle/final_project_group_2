@@ -48,46 +48,65 @@
 
         public function receipt()
         {
+            
+            
+            $data = getAllReceipt();
+            $this->_f3->set('receipt', $data);
+            
+            var_dump($data);
+            echo '<br><br><br><br>';
+        
+            $itemNames = array();
+            foreach($data as $aRow){
+                
+                $itemNames[] = $this->buildReceiptInfo($aRow['id']);
+            }
+            $this->_f3->set('itemNames', $itemNames);
+            
+            var_dump($itemNames);
+            
+            //buildReceiptInfo($id);
+            
+            
             echo Template::instance()->render('view/receipt.php');
         }
 
         public function cart()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
                 
-                //validate inputs
-                
-                
-                $theKeys = array();
-                $theValues = array();
-                
-                foreach($_SESSION['cart'] as $key=>$value){
-                    $theKeys[] =  $key;
-                    $theValues[] = $value;
+                if(count($_SESSION['cart']) < 1){
+                    
+                    echo Template::instance()->render('view/cart.php');
+                    
+                } else{
+                    //validate inputs                
+                    $theKeys = array();
+                    $theValues = array();
+                    
+                    foreach($_SESSION['cart'] as $key=>$value){
+                        $theKeys[] =  $key;
+                        $theValues[] = $value;
+                    }
+                    $stringKey = implode(",", $theKeys);
+                    $stringValue = implode(",", $theValues);
+                    
+                    
+                    //send to db 
+                    $tableNumber = $_POST['table'];
+                    $menuID = $stringKey;
+                    $quantity = $stringValue;
+                    $subtotal = $_POST['subtotal'];
+                    $tax = $_POST['tax'];
+                    $tip = $_POST['tip'];
+                    $total = $tip+$tax+$subtotal;
+                    
+                    setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total);
+                    
+                    session_unset();
+                    
+                    echo Template::instance()->render('view/home.php');
                 }
-                $stringKey = implode(",", $theKeys);
-                $stringValue = implode(",", $theValues);
-                
-                
-                //send to db
-                
-                
-                $tableNumber = $_POST['table'];
-                $menuID = $stringKey;
-                $quantity = $stringValue;
-                $subtotal = $_POST['subtotal'];
-                $tax = $_POST['tax'];
-                $tip = $_POST['tip'];
-                $total = $tip+$tax+$subtotal;
-                
-                setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total);
-                
-                session_unset();
-                
-                echo Template::instance()->render('view/home.php');
-                
-                
                 
             } else {
 
@@ -96,14 +115,18 @@
                 $subtotal = 0;
                 $tax;
 
-                foreach($_SESSION['cart'] as $key=>$value){
-                    $eachItem = getItemById($key);
-                    $total = $value * $eachItem['price'];
-
-                    $cartItems += array($key=> array('list_number'=>$num++,'food_name'=>$eachItem['food_name'], 'quantity'=>$value, 'total'=>$total));
-
-                    $subtotal += $total;
+                if(isset($_SESSION['cart'])){
+                    
+                    foreach($_SESSION['cart'] as $key=>$value){
+                        $eachItem = getItemById($key);
+                        $total = $value * $eachItem['price'];
+     
+                        $cartItems += array($key=> array('list_number'=>$num++,'food_name'=>$eachItem['food_name'], 'quantity'=>$value, 'total'=>$total));
+     
+                        $subtotal += $total;
+                    } 
                 }
+                
 
                 $tax = .065 * $subtotal;
                 $finalTotal = $tax + $subtotal;
@@ -114,6 +137,20 @@
                 $this->_f3->set('endTotal', round($finalTotal,2));
                 echo Template::instance()->render('view/cart.php');
             }
+        }
+        
+        public function buildReceiptInfo($id)
+        {
+            $theReceipt = getReceipt($id);            
+            
+            $itemNum = explode(",", $theReceipt['menu_item']);
+            
+            $menuItem = array();
+            
+            foreach($itemNum as $anItemNum){
+                $menuItem[$anItemNum] = getItemById($anItemNum)['food_name'];
+            }
+            return $menuItem;
         }
     }
 ?>

@@ -83,7 +83,7 @@
     //defined routes
 	$f3->route('GET /', 'Main->index');
 	$f3->route('GET|POST /menu', 'Main->menu');
-	$f3->route('GET|POST /receipt', 'Main->receipt');
+	$f3->route('GET /receipt', 'Main->receipt');
 	$f3->route('GET|POST /cart', 'Main->cart');
 
 	//runs the route
