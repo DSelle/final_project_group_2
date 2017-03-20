@@ -25,6 +25,7 @@ $(document).ready(function() {
         card.find(".menu_button").css("display", "none");
     });
 
+    //controls whether the scroll to top button is visible
     $(window).scroll(function(){
         if ($(this).scrollTop() > 100) {
             $('#scroll').fadeIn();
@@ -33,13 +34,15 @@ $(document).ready(function() {
         }
     });
 
+    //scrolls to top of screen
     $('#scroll').click(function(){
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
     });
 
     //create an event handler for submission
-   $('input[type="submit"]').on("click", validate);
+   $('#order').on("click", validate);
+   $('#receipt-table').on("click", receiptValidate);
 });
 
 /**
@@ -53,8 +56,10 @@ function validate(event)
     event.preventDefault();
     var isError = false;
 
+    var id = $(this).data('id');
+
     //quantity must be numeric and between 1-15
-    var qty = parseInt($('#quantity').val());
+    var qty = parseInt($('#' + id + '-quantity').val());
     if (!Number.isInteger(qty)) {
         alert("Quantity must be numeric");
         isError = true;
@@ -65,6 +70,40 @@ function validate(event)
 
     //submit the form now that all data is good
     if (!isError) {
-      $("#" + $("#item").val() + "-qty-submit").submit();
+      $("#" + id + "-qty-submit").submit();
     }
+}
+
+/**
+ * Validates the table and tip entered for the receipt
+ * If not valid, stop submission
+ * @param  {event} event The event to be validated
+ */
+function receiptValidate(event)
+{
+  //prevent the form from submitting
+  var isError = false;
+
+
+  //table must be numeric and between 1-15
+  var table = parseInt($('#table').val());
+  if (!Number.isInteger(table)) {
+      alert("Table number must be numeric");
+      isError = true;
+  } else if (table < 1 || table > 15) {
+      alert("Table number must be between 1-15");
+      isError = true;
+  }
+
+  //tip must be numeric and greater than or equal to 0
+  var tip = parseFloat($('#tip').val());
+  if (!$.isNumeric(tip) || tip < 0) {
+      alert("Tip must be a number greater than or equal to 0.");
+      isError = true;
+  }
+
+  //if there are errors, prevent form submission
+  if (isError) {
+    event.preventDefault();
+  }
 }

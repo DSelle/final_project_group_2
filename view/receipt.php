@@ -1,3 +1,13 @@
+<?php
+  /**
+  * Shows a list of receipts
+  *
+  * PHP Version 7
+  *
+  * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+  * @version 1.0
+  */
+?>
 <div class="container ">
     <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
 

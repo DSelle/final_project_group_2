@@ -1,3 +1,13 @@
+<?php
+  /**
+  * Displays menu and adds items to cart
+  *
+  * PHP Version 7
+  *
+  * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+  * @version 1.0
+  */
+?>
 <div class="container">
     <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
     <div class="row">
@@ -50,14 +60,14 @@
                     </div>
                     <div class="menu_button row-fluid fixed-bottom">
                         <form action="#" method="POST" id={{@menuItem['id']}}-qty-submit>
-                        <div class="col-sm-4">
-                            <input id="quantity" name="quantity" type="number" value="1" min="1" max="15" maxlength="2">
-                        </div>
-                        <input id="item" type="hidden" name="item" value="{{@menuItem['id']}}">
-                        <div class="col-sm-offset-4 col-sm-4">
-                            <button type="submit" class="btn btn-default">Add</button>
-                            <!--<input type="submit" class="btn btn-default" value="Add">-->
-                        </div>
+                          <div class="col-sm-4">
+                              <input id="{{@menuItem['id']}}-quantity" name="quantity" type="number" value="1" min="1" max="15" maxlength="2">
+                          </div>
+                          <input type="hidden" name="item-id" value="{{@menuItem['id']}}">
+                          <div class="col-sm-offset-4 col-sm-4">
+                              <!--<button type="submit" class="btn btn-default">Add</button>-->
+                              <input id="order" type="submit" class="btn btn-default" value="Add" data-id="{{@menuItem['id']}}">
+                          </div>
                         </form>
                     </div>
                 </div>

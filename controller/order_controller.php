@@ -1,21 +1,43 @@
 <?php
+/**
+* Handles all interactions between models and views
+* 
+* PHP Version 7
+*
+* @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+* @version 1.0
+*/
+
     require_once 'model/menu_db.php';
     require_once 'model/receipt_db.php';
 
+    /**
+     * Wrapper class for fat-free routing
+     */
     class OrderController
     {
         private $_f3; //router
 
+        /**
+         * Constructor for OrderController
+         * @param object $f3 The router object
+         */
         public function __construct($f3)
         {
             $this->_f3 = $f3;
         }
 
+        /**
+         * Routes to home.php
+         */
         public function home()
         {
             echo Template::instance()->render('view/home.php');
         }
 
+        /**
+         * Routes to menu.php and handles order submissions
+         */
         public function menu()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,7 +49,7 @@
                     $_SESSION['cart'] = array();
                 }
 
-                $_SESSION['cart'][$_POST['item']] = $_POST['quantity'];
+                $_SESSION['cart'][$_POST['item-id']] = $_POST['quantity'];
 
                 $data = getMenu();
 
@@ -46,10 +68,11 @@
 
         }
 
+        /**
+         * Routes to receipt.php and displays all receipts
+         */
         public function receipt()
         {
-
-
             $data = getAllReceipt();
             $this->_f3->set('receipt', $data);
 
@@ -66,13 +89,13 @@
                 $itemQty[] = $this->buildReceiptQuantity($aRow['id']);
             }
             $this->_f3->set('itemQty', $itemQty);
-            //var_dump($itemQty);
-            
-
 
             echo Template::instance()->render('view/receipt.php');
         }
 
+        /**
+         * Routes to cart.php and displays current order
+         */
         public function cart()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -141,6 +164,11 @@
             }
         }
 
+        /**
+         * Builds an array of menu items by name
+         * @param  String $id The id of the receipt to get items from
+         * @return array     The array of menu item names
+         */
         private function buildReceiptItems($id)
         {
             $theReceipt = getReceipt($id);
@@ -155,15 +183,18 @@
             return $menuItem;
         }
 
-        //call this funtion to create a data structure that holds an in order set of arrays
-        // quantity=>price for each exploded 'item_quantity' from a receipt
+        /**
+         * call this funtion to create a data structure that holds an inorder set of arrays
+         * @param  String $id The id of the receipt to get quantities from
+         * @return array     The array of menu item quantities and prices
+         */
         private function buildReceiptQuantity($id)
         {
             $theReceipt = getReceipt($id);
 
             $quantities = explode(",", $theReceipt['item_quantity']);
             $itemNum = explode(",", $theReceipt['menu_item']);
-            
+
             $num = 0;
             $foodPrice = array();
 
@@ -171,13 +202,8 @@
                 $mult = intval($aQuantity);
                 $foodPrice[$num] = $aQuantity . "  - - - - - - - - - - $" . (getItemById($itemNum[$num])['price'] * $mult);
                 $num++;
-
-                //echo $foodPrice."\n";
             }
-            //var_dump($foodPrice);
-            //exit(0);
             return $foodPrice;
         }
-
     }
 ?>

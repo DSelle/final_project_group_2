@@ -1,6 +1,17 @@
+<?php
+  /**
+  * Displays all ordered items
+  *
+  * PHP Version 7
+  *
+  * @author Nicholas Perez <nperez9@mail.greenriver.edu> Derrick Selle <dselle4@mail.greenriver.edu>
+  * @version 1.0
+  */
+?>
+
 <div class="container ">
     <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
-    
+
     <div class="row">
         <br><br><br><br>
 
@@ -14,32 +25,32 @@
     <div class="row">
         <br><br><br><br>
     </div>
-    
+
     <div class="row">
-        
+
         <a href="{{@BASE}}/menu">
             <div class="col-sm-offset-2 col-sm-2 text-center box_body">
                 <h4><strong>[ Menu ]</strong></h4>
             </div>
         </a>
-        
+
         <a href="{{@BASE}}/receipt">
             <div class="col-sm-2 col-sm-offset-1 text-center box_body">
                 <h4><strong>[ Receipt ]</strong></h4>
             </div>
         </a>
-        
+
         <a href="{{@BASE}}">
             <div class="col-sm-offset-1 col-sm-2 text-center box_body">
                 <h4><strong>[ Home ]</strong></h4>
             </div>
         </a>
     </div>
-    
+
     <div class="row">
-        <br><br>        
+        <br><br>
     </div>
-    
+
     <div class="row">
         <div class="col-sm-12 box_body">
             <table class="table">
@@ -64,7 +75,7 @@
             </table>
         </div>
     </div>
-    
+
     <div class="row">
         <br><br>
         <div class="col-sm-2 box_body text-left">
@@ -72,11 +83,11 @@
                 <p><strong>Tax: </strong>{{@tax}}</p>
                 <p><strong>Total: </strong>{{@endTotal}}</p>
         </div>
-        
+
         <div class="col-sm-8 cart_form_margin box_body text-left">
             <div class="row">
-                
-                <form action="" method="POST">                    
+
+                <form id="receipt-form" action="" method="POST">
                     <div class="col-sm-2">
                         <div class="form-group">
                           <label for="table">Table Number</label>
@@ -86,22 +97,22 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                           <label for="tip">Tip</label>
-                          <input name="tip" type="number" step="any" class="form-control" id="tip">
+                          <input name="tip" type="number" step="any" class="form-control" id="tip" value="0" min="0" maxlength="2">
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="form-group">
                         <br>
-                        <button type="submit" class="btn btn-default pull-right">Checkout</button>
-                        </div>    
+                        <button id="receipt-table" type="submit" class="btn btn-default pull-right">Checkout</button>
+                        </div>
                     </div>
                     <input type="hidden" name="tax" value="{{@tax}}">
                     <input type="hidden" name="subtotal" value="{{@subtotal}}">
                 </form>
-            </div>           
+            </div>
         </div>
     </div>
-    
+
     <div class="row the_foot">
         <div class="col-sm-12 sub_text text-center fixed-bottom">
         <p>© 2017 Trendy American Food Place Restaurants LLC.</p>
