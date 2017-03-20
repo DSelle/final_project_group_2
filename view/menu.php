@@ -56,6 +56,7 @@
                         <input id="item" type="hidden" name="item" value="{{@menuItem['id']}}">
                         <div class="col-sm-offset-4 col-sm-4">
                             <button type="submit" class="btn btn-default">Add</button>
+                            <!--<input type="submit" class="btn btn-default" value="Add">-->
                         </div>
                         </form>
                     </div>

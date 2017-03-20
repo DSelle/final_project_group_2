@@ -51,17 +51,27 @@
 
     return $rows;
   }
-  
+
+  /**
+   * Creates an entry in the receipt database with the provided data
+   * @param int $tableNumber The table the party was seated at
+   * @param String $menuID      List of menu items by id separated by commas
+   * @param String $quantity    List of the quantities purchased of each item
+   * @param float $subtotal    The subtotal of the bill
+   * @param float $tax         The tax cost
+   * @param float $tip         The size of the tip
+   * @param float $total       The total size of the bill
+   */
   function setReceipt($tableNumber, $menuID, $quantity, $subtotal, $tax, $tip, $total)
   {
       $pdo = getConnection();
-      
+
       $insert = 'INSERT INTO receipt (table_num, menu_item, item_quantity, sub_total, tax, tip, total )
                           VALUES (:table, :menu, :quantity, :sub, :tax, :tip, :total)';
-         
+
         //compile a prepared statement on the server
         $statement = $pdo->prepare($insert);
-         
+
         //bind inputs to the prepared statement
         $statement->bindValue(':table', $tableNumber, PDO::PARAM_INT);
         $statement->bindValue(':menu', $menuID, PDO::PARAM_STR);
@@ -70,10 +80,10 @@
         $statement->bindValue(':tax', $tax, PDO::PARAM_INT);
         $statement->bindValue(':tip', $tip, PDO::PARAM_INT);
         $statement->bindValue(':total', $total, PDO::PARAM_INT);
-         
+
         //execute() is used for INSERT, UPDATE & DELETE
         //returns the number of records that were altered or false (if none)
         $results = $statement->execute();
-         
+
   }
 ?>

@@ -1,6 +1,6 @@
 <div class="container ">
     <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
-    
+
     <div class="row">
         <br><br><br><br>
 
@@ -14,32 +14,32 @@
     <div class="row">
         <br><br><br><br>
     </div>
-    
+
     <div class="row">
-        
+
         <a href="{{@BASE}}/menu">
             <div class="col-sm-offset-2 col-sm-2 text-center box_body">
                 <h4><strong>[ Menu ]</strong></h4>
             </div>
         </a>
-        
+
         <a href="{{@BASE}}">
             <div class="col-sm-offset-1 col-sm-2 text-center box_body">
                 <h4><strong>[ Home ]</strong></h4>
             </div>
         </a>
-        
+
         <a href="{{@BASE}}/cart">
             <div class="col-sm-2 col-sm-offset-1 text-center box_body">
                 <h4><strong>[ Cart ]</strong></h4>
             </div>
-        </a>        
+        </a>
     </div>
-    
+
     <div class="row">
-        <br><br>        
+        <br><br>
     </div>
-    
+
     <div class="row">
         <div class="col-sm-12 box_body">
             <table class="table">
@@ -66,40 +66,40 @@
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            
+
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 <h4 class="modal-title">Receipt #{{@aReceipt['id']}}</h4>
                                             </div>
-                                            
+
                                             <div class="modal-body">
                                                 <loop from="{{@i=0}}" to="{{@i< count(@itemNames[@num])}}" step="{{@i++}}">
-                                                    {{@itemNames[@num][@i]}} ---->
+                                                    {{@itemNames[@num][@i]}} ----> {{@itemQty[@num][@i]}}
                                                 </loop>
                                                 <set num = "{{@num}} + 1">
-                                                
-                                                
+
+
                                                 <p>Subtotal: ${{@aReceipt['sub_total']}}</p>
                                                 <p>Tax: ${{@aReceipt['tax']}}</p>
                                                 <p>Tip: ${{@aReceipt['tip']}}</p>
                                                 <p>Total: ${{@aReceipt['total']}}</</p>
                                             </div>
-                                            
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                             </div>
-                                            
-                                        </div>                            
+
+                                        </div>
                                     </div>
-                                </div>                           
+                                </div>
                             </td>
                         </tr>
                     </repeat>
                 </tbody>
             </table>
-        </div>      
+        </div>
     </div>
-    
+
     <div class="row the_foot">
         <div class="col-sm-12 sub_text text-center fixed-bottom">
         <p>© 2017 Trendy American Food Place Restaurants LLC.</p>
