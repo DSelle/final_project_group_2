@@ -73,12 +73,13 @@
                                             </div>
 
                                             <div class="modal-body">
+                                                <p>Item Name - - - - - - - Qty - - - - - - Price*Qty</p>
                                                 <loop from="{{@i=0}}" to="{{@i< count(@itemNames[@num])}}" step="{{@i++}}">
-                                                    {{@itemNames[@num][@i]}} ----> {{@itemQty[@num][@i]}}
+                                                    <p>{{@itemNames[@num][@i]}} - - - - - - {{@itemQty[@num][@i]}}</p>
                                                 </loop>
                                                 <set num = "{{@num}} + 1">
 
-
+                                                <br>
                                                 <p>Subtotal: ${{@aReceipt['sub_total']}}</p>
                                                 <p>Tax: ${{@aReceipt['tax']}}</p>
                                                 <p>Tip: ${{@aReceipt['tip']}}</p>

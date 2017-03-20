@@ -12,10 +12,11 @@ body
 {
     border-style: solid;
     border-width: 1px;
-    border-color: #826e65;
+    border-color: #adf442;
     background-color: #efe6cb;
     border-radius: 5px;
-    box-shadow: 5px 5px  #adf442;
+    box-shadow: 6px 6px 10px #21201b;
+    
 }
 
 h4

@@ -66,8 +66,8 @@
                 $itemQty[] = $this->buildReceiptQuantity($aRow['id']);
             }
             $this->_f3->set('itemQty', $itemQty);
-            var_dump($itemQty);
-            exit(0);
+            //var_dump($itemQty);
+            
 
 
             echo Template::instance()->render('view/receipt.php');
@@ -163,12 +163,14 @@
 
             $quantities = explode(",", $theReceipt['item_quantity']);
             $itemNum = explode(",", $theReceipt['menu_item']);
+            
             $num = 0;
             $foodPrice = array();
 
             foreach($quantities as $aQuantity){
                 $mult = intval($aQuantity);
-                $foodPrice[$num] = $aQuantity . " --> Price: $" . (getItemById($itemNum[$num++])['price'] * $mult);
+                $foodPrice[$num] = $aQuantity . "  - - - - - - - - - - $" . (getItemById($itemNum[$num])['price'] * $mult);
+                $num++;
 
                 //echo $foodPrice."\n";
             }
