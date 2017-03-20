@@ -53,20 +53,13 @@
             $data = getAllReceipt();
             $this->_f3->set('receipt', $data);
             
-            var_dump($data);
-            echo '<br><br><br><br>';
-        
             $itemNames = array();
             foreach($data as $aRow){
                 
-                $itemNames[] = $this->buildReceiptInfo($aRow['id']);
+                $itemNames[] = $this->buildReceiptItems($aRow['id']);
             }
             $this->_f3->set('itemNames', $itemNames);
-            
-            var_dump($itemNames);
-            
-            //buildReceiptInfo($id);
-            
+                     
             
             echo Template::instance()->render('view/receipt.php');
         }
@@ -139,18 +132,37 @@
             }
         }
         
-        public function buildReceiptInfo($id)
+        private function buildReceiptItems($id)
         {
             $theReceipt = getReceipt($id);            
             
             $itemNum = explode(",", $theReceipt['menu_item']);
-            
+            $num = 0;
             $menuItem = array();
             
             foreach($itemNum as $anItemNum){
-                $menuItem[$anItemNum] = getItemById($anItemNum)['food_name'];
+                $menuItem[$num++] = getItemById($anItemNum)['food_name'];
             }
             return $menuItem;
         }
+        
+        //call this funtion to create a data structure that holds an in order set of arrays
+        // quantity=>price for each exploded 'item_quantity' from a receipt
+        private function buildReceiptQuantity($id)
+        {
+            $theReceipt = getReceipt($id);            
+            
+            $quantities = explode(",", $theReceipt['item_quantity']);
+            
+            $num = 0;
+            
+            $foodPrice = array();
+            
+            foreach($quantities as $aQuantity){
+                $foodPrice[$num++] = $quantities=>getItemById($anItemNum)['price '];
+            }
+            return $quantities;
+        }
+        
     }
 ?>

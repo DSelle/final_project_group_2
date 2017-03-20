@@ -53,6 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <set num='0'/>
                     <repeat group="{{@receipt}}" value="{{@aReceipt}}">
                         <tr>
                             <th scope="row">{{@aReceipt['id']}}</th>
@@ -72,15 +73,10 @@
                                             </div>
                                             
                                             <div class="modal-body">
-                                                <p>Item name - quantity - price</p>
-                                                
-                                                <loop from="{{@i=0}}" to="{{@i< count(@itemNames)}}" step="{{@i++}}">
-                                                    test
-                                                    <repeat group="{{@itemNames[@i]}}" value="{{@anItem}}=>{{@theItem}}">
-                                                        {{@theItem}}
-                                                    </repeat>
-                                                    
-                                                </loop>                                             
+                                                <loop from="{{@i=0}}" to="{{@i< count(@itemNames[@num])}}" step="{{@i++}}">
+                                                    {{@itemNames[@num][@i]}} ---->
+                                                </loop>
+                                                <set num = "{{@num}} + 1">
                                                 
                                                 
                                                 <p>Subtotal: ${{@aReceipt['sub_total']}}</p>
